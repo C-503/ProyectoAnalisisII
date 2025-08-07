@@ -1,6 +1,6 @@
 <?php
 
-
+// conexion a la base de datos C503
 define('SERVIDOR','localhost');
 define('USUARIO','root');
 define('PASSWORD','');
