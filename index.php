@@ -1,3 +1,20 @@
+<?php
+
+include ('app/config.php');
+
+session_start();
+if (isset($_SESSION['sesion_email'])) {
+
+    //echo "sesion de ".$_SESSION['sesion_email'];
+    $email_sesion = $_SESSION['sesion_email'];
+
+}else{
+    echo "no existe la sesion";
+    header('Location: '.$URL.'/login');
+}
+
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -15,8 +32,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+
+<!--Libreria Sweetalert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body class="hold-transition sidebar-mini">
+
+<script>
+ Swal.fire({
+  position: "top-center",
+  icon: "success",
+  title: "Bienvenido a JEY GT <?php echo $email_sesion?>",
+  showConfirmButton: false,
+  timer: 1000
+});
+</script>
+
+
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -252,6 +285,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+    <a href="<?php echo $URL;?>/app/controllers/login/cerrar_sesion.php" class="btn btn-danger">Cerrar Sersión</a>
 
     <!-- Main content -->
     <div class="content">
