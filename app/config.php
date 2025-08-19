@@ -21,3 +21,7 @@ try {
 }
 
 $URL = "http://localhost/proyecto%20analisis%20C-503";
+
+date_default_timezone_set("America/Guatemala");
+$fechaHora = date("Y-m-d h:i:s");
+
