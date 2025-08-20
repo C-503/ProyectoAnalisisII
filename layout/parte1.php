@@ -19,18 +19,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!--Libreria Sweetalert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini">
 
-<script>
- Swal.fire({
-  position: "top-center",
-  icon: "success",
-  title: "Bienvenido a JEY GT <?php echo $email_sesion?>",
-  showConfirmButton: false,
-  timer: 1000
-});
+<?php
+if(isset($_SESSION['mensaje2'])) {
+    $respuesta = $_SESSION['mensaje2']; ?>
+    <script>
+        Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Bienvenido a JEY GT <?php echo $email_sesion?>",
+        showConfirmButton: false,
+        timer: 1000
+   });
 </script>
+
+<?php
+  unset($_SESSION['mensaje2']);
+}
+?>
 
 
 <div class="wrapper">

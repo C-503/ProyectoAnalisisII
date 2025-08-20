@@ -1,8 +1,10 @@
 <?php
+
 include ('../app/config.php');
 include ('../layout/sesion.php');
 
 include ('../layout/parte1.php'); 
+include('../app/controllers/usuario/show_usuario.php');
 
 ?>
 
@@ -13,7 +15,7 @@ include ('../layout/parte1.php');
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0">Registro de un nuevo usuario</h1>
+            <h1 class="m-0">Usuario <?php echo $nombres;?></h1>
           </div><!-- /.col -->
          
         </div><!-- /.row -->
@@ -27,9 +29,9 @@ include ('../layout/parte1.php');
         
         <div class="row">
             <div class="col-md-5">
-                <div class="card card-primary">
+                <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">Registrar Usuario</h3>
+                <h3 class="card-title">Eliminar Usuario</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -41,28 +43,24 @@ include ('../layout/parte1.php');
               <div class="card-body" style="display: block;">
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="../app/controllers/usuario/create.php" method="post">
-                            <div class="form-group">
+                        <form action="../app/controllers/usuario/delete_usuario.php" method="POST">
+                            <input type="text" value="<?php echo $id_usuario_get;?>" name="id_usuario" hidden> 
+                             <div class="form-group">
                                 <label for="">Nombres</label>
-                                <input type="text" name="nombres" class="form-control" placeholder="Ingrese sus nombres" required>
+                                <input type="text" name="nombres" class="form-control" value="<?php echo $nombres;?>" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Ingrese su email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Contraseña</label>
-                                <input type="text" name="password_user" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Verificar contraseña</label>
-                                <input type="text" name="password_repeat" class="form-control" required>
+                                <input type="email" name="email" class="form-control" value="<?php echo $email;?>" disabled>
                             </div>
                             <hr>
                             <div class="form-group">
-                                <a href="index.php" class="btn btn-secondary col-md-5">Cancelar</a>
-                                <button type="submit" class="btn btn-primary col-md-5">Guardar</button>
+                                <center>
+                                <a href="index.php" class="btn btn-secondary col-md-5">Regresar</a>
+                                <button class="btn btn-danger col-md-5">Eliminar</button>
+                                </center>
                             </div>
+                        
                         </form>
                     </div>
                 </div>
@@ -81,5 +79,4 @@ include ('../layout/parte1.php');
   <!-- /.content-wrapper -->
 
 <?php include ('../layout/parte2.php'); ?>
-<?php include ('../layout/mensajes.php'); ?>
 
