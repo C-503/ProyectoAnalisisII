@@ -82,6 +82,7 @@ if(isset($_SESSION['mensaje5'])) {
                         <th><center>No</center></th>
                         <th><center>Nombre y apellido</center></th>
                         <th><center>Email</center></th>
+                        <th><center>Rol del usuario</center></th>
                         <th><center>Acciones</center></th>
                   </tr>
                   </thead>
@@ -96,6 +97,7 @@ if(isset($_SESSION['mensaje5'])) {
                             <td><center><?php echo $contador = $contador +1;?></center></td>
                             <td><center><?php echo $datos_usuarios['nombres'];?></center></td>
                             <td><center><?php echo $datos_usuarios['email'];?></center></td>
+                            <td><center><?php echo $datos_usuarios['rol'];?></center></td>
                              <td><center>
                               <div class="btn-group">
                         <a href="show.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-info"><i class="fa fa-eye"></i> Ver</a>
@@ -113,6 +115,7 @@ if(isset($_SESSION['mensaje5'])) {
                         <th><center>No</center></th>
                         <th><center>Nombre y apellido</center></th>
                         <th><center>Email</center></th>
+                        <th><center>Rol del Usuario</center></th>
                         <th><center>Acciones</center></th>
                     </tr>
                   </tfoot>

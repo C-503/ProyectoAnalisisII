@@ -5,6 +5,7 @@ include ('../layout/sesion.php');
 
 include ('../layout/parte1.php'); 
 include('../app/controllers/usuario/Update_usuario.php');
+include('../app/controllers/roles/listado_de_roles.php');
 
 ?>
 
@@ -70,6 +71,29 @@ if(isset($_SESSION['mensaje4'])) {
                             <div class="form-group">
                                 <label for="">Email</label>
                                 <input type="email" name="email" class="form-control" value="<?php echo $email;?>" placeholder="Ingrese su email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Rol</label>
+                                <select name="rol" id="" class="form-control" required>
+                                  
+                                  <?php
+                                    foreach ($datos_roles as $dato_roles) { 
+                                      $rol_tabla = $dato_roles['rol'];
+                                      $id_rol = $dato_roles['id_rol']; ?>
+
+                                     <option value="<?php echo $id_rol;?>" 
+                                     <?php 
+                                     if($rol_tabla == $rol){?>
+
+                                        selected="selected"
+
+                                    <?php }
+                                     ?> ><?php echo $rol_tabla?></option>
+
+                                   <?php
+                                    }
+                                  ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Contraseña</label>
