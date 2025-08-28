@@ -22,7 +22,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
+  <!-- Ionicons CDN -->
+   
+<!-- jQuery -->
+<script src="<?php echo $URL;?>/public/templeates/AdminLTE-3.2.0/AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 
@@ -140,6 +143,49 @@ if(isset($_SESSION['mensaje2'])) {
                 <a href="<?php echo $URL;?>/roles/create.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Creacion de Roles</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tags"></i>
+              <p>
+                Categorias
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/Categorias" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de Categorias</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+           <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Almacen
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/almacen" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/almacen/create.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Creacion de Productos</p>
                 </a>
               </li>
             </ul>
