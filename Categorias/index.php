@@ -162,6 +162,7 @@ if(isset($_SESSION['mensaje4'])) {
                                                         <div class="form-group">
                                                             <label for="">Nombre de la categoria</label>
                                                             <input type="text" id="nombre_categoria<?php echo $id_categoria;?>" value="<?php echo $nombre_categoria;?>" class="form-control">
+                                                            <small style="color: red; display: none;" id="lbl_update<?php echo $id_categoria;?>">* Este campo es requerido</small>
                                                         </div>
                                                     </div>
                                             </div>    
@@ -181,11 +182,20 @@ if(isset($_SESSION['mensaje4'])) {
                                         $('#btn-update<?php echo $id_categoria;?>').click(function(){
                                             var nombre_categoria = $('#nombre_categoria<?php echo $id_categoria;?>').val();
                                             var id_categoria = '<?php echo $id_categoria;?>';
-                                            var url = "../app/controllers/categorias/update_de_categorias.php";
-                                             $.get(url, {nombre_categoria:nombre_categoria,id_categoria:id_categoria}, function(datos){
-                                             $('#respuesta_update<?php echo $id_categoria;?>').html(datos);
+
+                                            if (nombre_categoria == "") {
+                                                //alert("El campo esta vacio");
+                                                $('#nombre_categoria<?php echo $id_categoria;?>').focus();
+                                                $('#lbl_update<?php echo $id_categoria;?>').css('display', 'block');
+                                            } else {
+                                                 var url = "../app/controllers/categorias/update_de_categorias.php";
+                                                 $.get(url, {nombre_categoria:nombre_categoria,id_categoria:id_categoria}, function(datos){
+                                                 $('#respuesta_update<?php echo $id_categoria;?>').html(datos);
                    
                                              });
+                                             }
+
+                                            
                                         });
                                 </script>
                                 <div id="respuesta_update<?php echo $id_categoria;?>"></div>
@@ -298,7 +308,8 @@ if(isset($_SESSION['mensaje4'])) {
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Nombre de la categoria</label>
-                                <input type="text" id="nombre_categoria" class="form-control" placeholder="Ingrese la categoria" required>
+                                <input type="text" id="nombre_categoria" class="form-control" placeholder="Ingrese la categoria">
+                                <small style="color: red; display: none;" id="lbl_create">* Este campo es requerido</small>
                             </div>
                         </div>
                 </div>    
@@ -321,11 +332,19 @@ if(isset($_SESSION['mensaje4'])) {
         $('#btn-create').click(function(){
            // alert("Se guardara la categoria");
               var nombre_categoria = $('#nombre_categoria').val();
-             var url = "../app/controllers/categorias/registro_de_categorias.php";
+
+              if (nombre_categoria == "") {
+                  //alert("El campo esta vacio");
+                  $('#nombre_categoria').focus();
+                  $('#lbl_create').css('display', 'block');
+              } else {
+                   var url = "../app/controllers/categorias/registro_de_categorias.php";
                 $.get(url, {nombre_categoria:nombre_categoria}, function(datos){
                     $('#respuesta').html(datos);
                    
                 });
+              }
+            
            
         });
       </script>
