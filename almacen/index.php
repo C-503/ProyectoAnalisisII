@@ -11,7 +11,7 @@ if(isset($_SESSION['mensaje1'])) {
         Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Rol guardado correctamente",
+        title: "Producto guardado correctamente",
         showConfirmButton: false,
         timer: 2000
    });
@@ -93,7 +93,8 @@ if(isset($_SESSION['mensaje5'])) {
               </div>
               <!-- /.card-header -->
               <div class="card-body" style="display: block;">
-                 <table id="example1" class="table table-bordered table-striped">
+                 <div class="table-responsive">
+                  <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                         <th><center>No</center></th>
@@ -102,13 +103,8 @@ if(isset($_SESSION['mensaje5'])) {
                         <th><center>Nombre</center></th>
                         <th><center>Descripcion</center></th>
                         <th><center>Stock</center></th>
-                        <th><center>Stock minimo</center></th>
-                        <th><center>Stock maximo</center></th>
-                        <th><center>Precio compra</center></th>
                         <th><center>Precio Venta</center></th>
-                        <th><center>fecha compra</center></th>
                         <th><center>imagen</center></th>
-                        <th><center>usuario</center></th>
                         <th><center>Acciones</center></th>
                   </tr>
                   </thead>
@@ -116,7 +112,9 @@ if(isset($_SESSION['mensaje5'])) {
                       <?php
                       
                         $contador = 0;
-                      foreach ($datos_productos as $dato_productos){ ?>
+                      foreach ($datos_productos as $dato_productos){ 
+                        $id_producto = $dato_productos['id_producto'];
+                        ?>
 
                         <tr>
                             <td><?php echo $contador = $contador + 1;?></td>
@@ -125,17 +123,19 @@ if(isset($_SESSION['mensaje5'])) {
                             <td><?php echo $dato_productos['nombre'];?></td>
                             <td><?php echo $dato_productos['descripcion'];?></td>
                             <td><?php echo $dato_productos['stock'];?></td>
-                            <td><?php echo $dato_productos['stock_minimo'];?></td>
-                            <td><?php echo $dato_productos['stock_maxino'];?></td>
-                            <td><?php echo $dato_productos['precio_compra'];?></td>
                             <td><?php echo $dato_productos['precio_venta'];?></td>
-                            <td><?php echo $dato_productos['fecha_ingreso'];?></td>
                             <td>
-                                <img src="<?php echo $dato_productos['imagen'];?>" width="100" alt="">
+                                <img src="<?php echo $URL."/almacen/img_productos/".$dato_productos['imagen'];?>" width="100" alt="">
                             </td>
-                            <td><?php echo $dato_productos['email'];?></td>
+
                             <td>
-                                <a href="" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Editar</a>
+                                <center>
+                              <div class="btn-group">
+                        <a href="show.php?id=<?php echo $id_producto; ?>" type="button" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> Ver</a>
+                        <a href="Update.php?id=<?php echo $id_producto; ?>" type="button" class="btn btn-success  btn-sm"><i class="fa fa-pencil-alt"></i> Editar</a>
+                        <a href="delete.php?id=<?php echo $id_producto; ?>" type="button" class="btn btn-danger  btn-sm"><i class="fa fa-trash"></i> Borrar</a>
+                      </div>
+                             </center>
                             </td>
 
 
@@ -148,6 +148,7 @@ if(isset($_SESSION['mensaje5'])) {
                     </tbody>
                 
                 </table>
+                 </div>
               </div>
               <!-- /.card-body -->
             </div>
