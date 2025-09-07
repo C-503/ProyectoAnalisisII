@@ -28,14 +28,14 @@ if(isset($_SESSION['mensaje6'])) {
         Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Rol actualizado correctamente",
+        title: "Producto actualizado correctamente",
         showConfirmButton: false,
         timer: 2000
    });
 </script>
 
 <?php
-  unset($_SESSION['mensaje1']);
+  unset($_SESSION['mensaje6']);
 
 }
 
@@ -45,7 +45,7 @@ if(isset($_SESSION['mensaje5'])) {
         Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Usuario Eliminado correctamente",
+        title: "producto Eliminado correctamente",
         showConfirmButton: false,
         timer: 2000
    });

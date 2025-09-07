@@ -10,18 +10,18 @@ include('../app/controllers/almacen/cargar_producto.php');
 
 <?php
 
-if(isset($_SESSION['mensaje6'])) {
-    $respuesta = $_SESSION['mensaje6']; ?>
+if(isset($_SESSION['mensaje4'])) {
+    $respuesta = $_SESSION['mensaje4']; ?>
     <script>
         Swal.fire({
          title: "JEY GT",
-         text: "Producto no creado",
+         text: "Producto no Actualizado",
         icon: "error"
    });
 </script>
 
 <?php
-  unset($_SESSION['mensaje6']);
+  unset($_SESSION['mensaje4']);
 
 }
 
@@ -64,7 +64,8 @@ if(isset($_SESSION['mensaje6'])) {
               <div class="card-body" style="display: block;">
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="../app/controllers/almacen/create.php" method="post" enctype="multipart/form-data">
+                        <form action="../app/controllers/almacen/update.php" method="post" enctype="multipart/form-data">
+                            <input type="text" value="<?php echo $id_producto_get;?>"  name="id_producto" hidden>
                             
                             <div class="row">
                                 <div class="col-md-9">
@@ -93,7 +94,7 @@ if(isset($_SESSION['mensaje6'])) {
                                                 $nombre_categoria_tabla = $dato_categoria['nombre_categoria'];
                                                 $id_categoria = $dato_categoria['id_categoria']; ?>
 
-                                                    <option value="<?php echo $id_rol;?>" 
+                                                    <option value="<?php echo $id_categoria;?>" 
                                              <?php 
                                                     if($nombre_categoria_tabla == $nombre_categoria){?>
 
@@ -174,6 +175,7 @@ if(isset($_SESSION['mensaje6'])) {
                                     <div class="form-group">
                                         <label for="">Igamen del producto:</label>
                                         <input type="file" name="image" class="form-control" id="file">
+                                        <input type="text" name="image_text" value="<?php echo $imagen;?>" hidden>
                                         <br>
                                                 <output id="list">
                                                     <img src="<?php echo $URL."/almacen/img_productos/".$imagen;?>" width="100%" alt="">
