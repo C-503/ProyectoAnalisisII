@@ -5,6 +5,9 @@ include ('layout/sesion.php');
 include ('layout/parte1.php'); 
 include ('app/controllers/usuario/listado_de_usuarios.php');
 include ('app/controllers/roles/listado_de_roles.php');
+include ('app/controllers/categorias/listado_de_categorias.php');
+include ('app/controllers/almacen/listado_de_productos.php');
+include ('app/controllers/proveedores/listado_de_proveedores.php');
 
 ?>
 
@@ -74,13 +77,88 @@ include ('app/controllers/roles/listado_de_roles.php');
               </div>
               <a href="<?php echo $URL;?>/roles/create.php">
                 <div class="icon">
-                <i class="fas fa-user-plus"></i>
+                <i class="fas fa-address-card"></i>
               </div>
               </a>
               <a href="<?php echo $URL;?>/roles" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
          
+
+                  <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+
+                <?php 
+                  $contador_categorias = 0;
+                  foreach($datos_categorias as $dato_categorias){
+                    $contador_categorias = $contador_categorias + 1;
+                  }
+                ?>
+                <h3><?php echo $contador_categorias?></h3>
+
+                <p>Categorias Registradas</p>
+              </div>
+              <a href="<?php echo $URL;?>/Categorias/index.php">
+                <div class="icon">
+                <i class="fas fa-tags"></i>
+              </div>
+              </a>
+              <a href="<?php echo $URL;?>/Categorias" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+
+                <?php 
+                  $contador_almacen = 0;
+                  foreach($datos_productos as $dato_productos){
+                    $contador_almacen = $contador_almacen + 1;
+                  }
+                ?>
+                <h3><?php echo $contador_almacen?></h3>
+
+                <p>Productos Registrados</p>
+              </div>
+              <a href="<?php echo $URL;?>/almacen/create.php">
+                <div class="icon">
+                <i class="fas fa-list"></i>
+              </div>
+              </a>
+              <a href="<?php echo $URL;?>/almacen" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+                   <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-dark">
+              <div class="inner">
+
+                <?php 
+                  $contador_proveedor = 0;
+                  foreach($datos_proveedores as $dato_proveedores){
+                    $contador_proveedor = $contador_proveedor + 1;
+                  }
+                ?>
+                <h3><?php echo $contador_proveedor?></h3>
+
+                <p>Proveedores Registrados</p>
+              </div>
+              <a href="<?php echo $URL;?>/Proveedores/index.php">
+                <div class="icon">
+                <i class="fas fa-car"></i>
+              </div>
+              </a>
+              <a href="<?php echo $URL;?>/Proveedores" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
           <!-- ./col -->
         </div>
 

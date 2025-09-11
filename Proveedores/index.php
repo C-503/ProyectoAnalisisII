@@ -73,6 +73,40 @@ if(isset($_SESSION['mensaje4'])) {
 
 }
 
+if(isset($_SESSION['mensaje2'])) {
+    $respuesta = $_SESSION['mensaje2']; ?>
+    <script>
+        Swal.fire({
+        position: "top-center",
+        icon: "error",
+        title: "No se Elimino el proveedor",
+        showConfirmButton: false,
+        timer: 2000
+   });
+</script>
+
+<?php
+  unset($_SESSION['mensaje2']);
+
+}
+
+if(isset($_SESSION['mensaje3'])) {
+    $respuesta = $_SESSION['mensaje3']; ?>
+    <script>
+        Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Se elimino el proveedor correctamente",
+        showConfirmButton: false,
+        timer: 2000
+   });
+</script>
+
+<?php
+  unset($_SESSION['mensaje3']);
+
+}
+
 
 ?>
 
@@ -150,7 +184,12 @@ if(isset($_SESSION['mensaje4'])) {
                         <tr>
                             <td><center><?php echo $contador = $contador +1;?></center></td>
                             <td><center><?php echo $dato_proveedores['nombre_proveedor'];?></center></td>
-                            <td><center><?php echo $dato_proveedores['celular'];?></center></td>
+                            <td>
+                                <a href="https://wa.me/502<?php echo $dato_proveedores['celular'];?>" target="_blank" class="btn btn-success">
+                                    <i class="fa fa-phone"></i>
+                                    <center><?php echo $dato_proveedores['celular'];?></center>
+                                </a>
+                            </td>
                             <td><center><?php echo $dato_proveedores['telefono'];?></center></td>
                             <td><center><?php echo $dato_proveedores['empresa'];?></center></td>
                             <td><center><?php echo $dato_proveedores['email'];?></center></td>
@@ -161,7 +200,7 @@ if(isset($_SESSION['mensaje4'])) {
                                      <i class="fa fa-pencil-alt"></i> Editar
                                 </button>
 
-                                 <!-- modal para actualizar categorias -->
+                                 <!-- modal para actualizar proveedores -->
                                     <div class="modal fade" id="modal-update<?php echo $id_proveedor;?>">
                                     <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -294,6 +333,116 @@ if(isset($_SESSION['mensaje4'])) {
 
                                 <!-- /.modal-fin -->
                       </div>
+
+                                           <div class="btn-group">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete<?php echo $id_proveedor;?>">
+                                     <i class="fa fa-trash"></i> Borrar
+                                </button>
+
+                                 <!-- modal para eliminar proveedores -->
+                                    <div class="modal fade" id="modal-delete<?php echo $id_proveedor;?>">
+                                    <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color: #8d0101ff; color: black;" >
+                                        <h4 class="modal-title">Eliminar proveedor</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        
+                                            <div class="row">
+                    <div class="col-md-6">
+                             <div class="form-group">
+                                <label for="">Nombre del proveedor</label>
+                                <input type="text" id="nombre_proveedor<?php echo $id_proveedor;?>" value="<?php echo $nombre_proveedor;?>" class="form-control" disabled>
+                                <small style="color: red; display: none;" id="lbl_delete<?php echo $id_proveedor;?>">* Este campo es requerido</small>
+                              </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                                <label for="">Celular del proveedor</label>
+                                <input type="text" id="celular_proveedor<?php echo $id_proveedor;?>" value="<?php echo $celular;?>" class="form-control" disabled>
+                                <small style="color: red; display: none;" id="lbl_delete<?php echo $id_proveedor;?>">* Este campo es requerido </small>
+                            </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Nombre de la Empresa</label>
+                                <input type="text" id="empresa_proveedor<?php echo $id_proveedor;?>" value="<?php echo $empresa;?>" class="form-control" disabled>
+                                <small style="color: red; display: none;" id="lbl_delete<?php echo $id_proveedor;?>">* Este campo es requerido</small>
+                            </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                                <label for="">Telefono</label>
+                                <input type="text" id="telefono_proveedor<?php echo $id_proveedor;?>" value="<?php echo $telefono;?>" class="form-control" disabled>
+                                <small style="color: red; display: none;" id="lbl_delete<?php echo $id_proveedor;?>">* Este campo es requerido</small>
+                        </div>
+
+                    </div>
+                </div>
+              
+                <div class="row">
+                        <div class="col-md-6">
+                            
+                            <div class="form-group">
+                                <label for="">Correo Electronico</label>
+                                <input type="text" id="email_proveedor<?php echo $id_proveedor;?>" value="<?php echo $email;?>" class="form-control" disabled>
+                                <small style="color: red; display: none;" id="lbl_delete<?php echo $id_proveedor;?>">* Este campo es requerido</small>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Direccion del proveedor</label>
+                                <input type="text" id="direccion_proveedor<?php echo $id_proveedor;?>" value="<?php echo $direccion;?>" class="form-control" disabled>
+                                <small style="color: red; display: none;" id="lbl_delete<?php echo $id_proveedor;?>">* Este campo es requerido</small>
+                            </div>
+                            
+                        </div>
+                            
+                            
+                </div>     
+
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" id="btn-delete<?php echo $id_proveedor;?>">Eliminar</button>
+                                        
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <script>
+                                        $('#btn-delete<?php echo $id_proveedor;?>').click(function(){
+                                           
+                                            var id_proveedor = '<?php echo $id_proveedor;?>';
+
+                                            
+                                            
+                                                 var url2 = "../app/controllers/proveedores/delete.php";
+                                                 $.get(url2, {id_proveedor:id_proveedor}, function(datos){
+                                                 $('#respuesta_delete<?php echo $id_proveedor;?>').html(datos);
+                   
+                                             });
+                                             
+
+                                            
+                                        });
+                                </script>
+                                <div id="respuesta_delete<?php echo $id_proveedor;?>"></div>
+
+                                <!-- /.modal-fin -->
+                      </div>
+                                        
                              </center></td>
                         </tr>
                       <?php  

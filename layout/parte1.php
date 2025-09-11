@@ -191,6 +191,31 @@ if(isset($_SESSION['mensaje2'])) {
             </ul>
           </li>
 
+
+              <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-cart-plus"></i>
+              <p>
+                Compras
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/compras" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de Compras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/compras/create.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Creacion de Compras</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-car"></i>
