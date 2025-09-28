@@ -11,7 +11,7 @@ if(isset($_SESSION['mensaje1'])) {
         Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Producto guardado correctamente",
+        title: "Compra registrada correctamente",
         showConfirmButton: false,
         timer: 2000
    });
@@ -28,7 +28,7 @@ if(isset($_SESSION['mensaje6'])) {
         Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Producto actualizado correctamente",
+        title: "Se actualizo la compra de la manera correcta",
         showConfirmButton: false,
         timer: 2000
    });
@@ -45,7 +45,7 @@ if(isset($_SESSION['mensaje5'])) {
         Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "producto Eliminado correctamente",
+        title: "Se borro la compra de la manera correcta",
         showConfirmButton: false,
         timer: 2000
    });
@@ -97,7 +97,7 @@ if(isset($_SESSION['mensaje5'])) {
                   <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                        <th><center>No</center></th>
+                        
                         <th><center>Nro Compra</center></th>
                         <th><center>Producto</center></th>
                         <th><center>Fecha Compra</center></th>
@@ -119,7 +119,7 @@ if(isset($_SESSION['mensaje5'])) {
 
                         <tr>
                            <td><?php echo $contador = $contador + 1;?></td>
-                           <td><?php echo $dato_compras['nro_compra']?></td>
+                           
                             <td>
                                 <button type="button" class="btn btn-info" data-toggle="modal" 
                                     data-target="#modal-producto<?php echo $id_compra;?>">

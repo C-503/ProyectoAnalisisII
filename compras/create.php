@@ -18,7 +18,7 @@ if(isset($_SESSION['mensaje6'])) {
     <script>
         Swal.fire({
          title: "JEY GT",
-         text: "Producto no creado",
+         text: "Compra no registrada",
         icon: "error"
    });
 </script>
@@ -126,6 +126,10 @@ if(isset($_SESSION['mensaje6'])) {
                       </button>
                       <script>
                         $('#btn_seleccionar<?php echo $id_producto;?>').click(function(){
+
+                            var producto = "<?php echo $dato_productos['id_producto']?>";
+                            $('#id_producto').val(producto);
+
                             var codigo = "<?php echo $dato_productos['codigo']?>";
                             $('#codigo_producto').val(codigo);
                              
@@ -192,6 +196,7 @@ if(isset($_SESSION['mensaje6'])) {
                                     <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <input type="text" id="id_producto" hidden>
                                         <label for="">Codigo: </label>
                                     
                                         <input type="text" class="form-control" id="codigo_producto" disabled>
@@ -351,6 +356,8 @@ if(isset($_SESSION['mensaje6'])) {
                       </button>
                       <script>
                         $('#btn_seleccionar_proveedor<?php echo $id_proveedor;?>').click(function (){
+                           var id_proveedor = '<?php echo $id_proveedor;?>';
+                            $('#id_proveedor').val(id_proveedor);
                             var nombre_proveedor = '<?php echo $nombre_proveedor;?>';
                             $('#nombre_proveedor').val(nombre_proveedor);
                             var celular = '<?php echo $celular;?>';
@@ -389,6 +396,7 @@ if(isset($_SESSION['mensaje6'])) {
                                      <div class="row">
                     <div class="col-md-4">
                              <div class="form-group">
+                                <input type="text" id="id_proveedor" hidden>
                                 <label for="">Nombre del proveedor</label>
                                 <input type="text" id="nombre_proveedor" class="form-control" disabled>
                                 
@@ -479,26 +487,27 @@ if(isset($_SESSION['mensaje6'])) {
                                     ?>
                                     <label for="">Numero de la compra</label>
                                     <input type="text" value="<?php echo $contador_de_compras?>" class="form-control" disabled>
+                                    <input type="text" value="<?php echo $contador_de_compras?>" id="nro_compra" hidden>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Fecha de la compra</label>
-                                    <input type="Date" class="form-control">
+                                    <input type="Date" class="form-control" id="fecha_compra">
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Comprobante de la compra</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="comprobante">
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Precio de la compra</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="precio_compra">
                                 </div>
                             </div>
 
@@ -519,12 +528,12 @@ if(isset($_SESSION['mensaje6'])) {
                              <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Cantidad de la compra</label>
-                                    <input type="number" id="cantidad_compra" class="form-control" >
+                                    <input type="number" id="cantidad" class="form-control" >
                                 </div>
                                 <script>
-                                    $('#cantidad_compra').keyup(function() {
+                                    $('#cantidad').keyup(function() {
                                         var stock_actual = $('#stock_actual').val();
-                                        var stock_compra = $('#cantidad_compra').val();
+                                        var stock_compra = $('#cantidad').val();
                                         var total = parseInt( stock_actual) + parseInt( stock_compra);
                                         
                                         $('#stock_total').val(total);
@@ -538,9 +547,70 @@ if(isset($_SESSION['mensaje6'])) {
                                     <label for="">Usuario</label>
                                     <input type="text" value="<?php echo $email_sesion?>" class="form-control" disabled>
                                 </div>
-                            </div>
-                           
+                            </div>                           
                         </div>
+                        
+                            <hr>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block" id="btn_guardar_compra">Guardar Compra</button>
+                                </div>
+                                <div id="respuesta_compra"></div>
+                            </div>
+                            <script>
+
+                                $('#btn_guardar_compra').click(function (){
+
+                                    var id_producto = $('#id_producto').val();
+                                    var nro_compra = $('#nro_compra').val();
+                                    var fecha_compra = $('#fecha_compra').val();
+                                    var id_proveedor = $('#id_proveedor').val();
+                                    var comprobante = $('#comprobante').val();
+                                    var id_usuario = '<?php echo $id_usuario_sesion;?>';
+                                    var precio_compra = $('#precio_compra').val();
+                                    var cantidad = $('#cantidad').val();
+                                    var stock_total = $('#stock_total').val();
+
+                                     if(id_producto == ""){
+
+                                        $('#id_producto').focus();
+                                        alert("Debe LLenar todos los campos");
+
+
+                                    }else if(fecha_compra == ""){
+
+                                        $('#fecha_compra').focus();
+                                        alert("Debe LLenar todos los campos");
+                                    }else if(comprobante == ""){
+
+                                        $('#comprobante').focus();
+                                        alert("Debe LLenar todos los campos");
+                                    }else if(precio_compra == ""){
+
+                                        $('#precio_compra').focus();
+                                        alert("Debe LLenar todos los campos");
+                                    }else if(cantidad == ""){
+                                        $('#cantidad').focus();
+                                        alert("Debe LLenar todos los campos");
+                                    }
+                                    else{
+                                        var url = "../app/controllers/compras/create.php";
+                                        $.get(url, {id_producto:id_producto,nro_compra:nro_compra, fecha_compra:fecha_compra, id_proveedor:id_proveedor,comprobante:comprobante,id_usuario:id_usuario,precio_compra:precio_compra,cantidad:cantidad,stock_total:stock_total}, function(datos){
+                                            $('#respuesta_compra').html(datos);
+                                        });
+                                    }
+                                   
+
+
+                                });    
+
+
+
+
+
+
+                            </script>
               </div>
               <!-- /.card-body -->
             </div>
