@@ -8,6 +8,7 @@ include ('app/controllers/roles/listado_de_roles.php');
 include ('app/controllers/categorias/listado_de_categorias.php');
 include ('app/controllers/almacen/listado_de_productos.php');
 include ('app/controllers/proveedores/listado_de_proveedores.php');
+include ('app/controllers/compras/listado_de_compras.php');
 
 ?>
 
@@ -131,6 +132,31 @@ include ('app/controllers/proveedores/listado_de_proveedores.php');
               </div>
               </a>
               <a href="<?php echo $URL;?>/almacen" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+                  <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+
+                <?php 
+                  $contador_compra = 0;
+                  foreach($datos_compras as $dato_compras){
+                    $contador_compra = $contador_compra + 1;
+                  }
+                ?>
+                <h3><?php echo $contador_compra?></h3>
+
+                <p>Compras Registradas</p>
+              </div>
+              <a href="<?php echo $URL;?>/compras/create.php">
+                <div class="icon">
+                <i class="fas fa-cart-plus"></i>
+              </div>
+              </a>
+              <a href="<?php echo $URL;?>/compras" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
