@@ -255,16 +255,74 @@ if(isset($_SESSION['mensaje6'])) {
                                
                                 <tbody>
 
-
-
-                                    
-
-                                    
+                                    <?php 
+                                      $contador_de_carrito = 0;
+                                      $nro_venta = $contador_de_ventas + 1;
+                                      $cantidad_total = 0;
+                                      $precio_unitario_total = 0;
+                                      $precio_subtotal = 0;
+                                      
+                                      $sql_carrito = "SELECT *, pro.nombre as nombre_producto, pro.descripcion as descripcion, pro.precio_venta as precio_venta FROM tb_carrito AS carr INNER JOIN tb_almacen as pro ON carr.id_producto = pro.id_producto WHERE nro_venta = '$nro_venta' ORDER BY id_carrito DESC";
+                                      $query_carrito = $pdo->prepare($sql_carrito);
+                                      $query_carrito->execute();
+                                      $datos_carrito = $query_carrito->fetchAll(PDO::FETCH_ASSOC);
+                                      foreach($datos_carrito as $dato_carrito){
+                                        $id_carrito = $dato_carrito['id_carrito'];
+                                        $contador_de_carrito = $contador_de_carrito + 1; 
+                                        $cantidad_total = $cantidad_total + $dato_carrito['cantidad'];
+                                        $precio_unitario_total = $precio_unitario_total + $dato_carrito['precio_venta'];
+                                        $precio_subtotal = $precio_subtotal + ($dato_carrito['cantidad'] * $dato_carrito['precio_venta']);
+                                        ?>
+                                        
+                                      
+                                        <tr>
+                                          <td><center><?php echo $contador_de_carrito; ?></center></td>
+                                          <td><center><?php echo $dato_carrito['nombre_producto']; ?></center></td>
+                                          <td><center><?php echo $dato_carrito['descripcion']; ?></center></td>
+                                          <td><center><?php echo $dato_carrito['cantidad']; ?></center></td>
+                                          <td><center><?php echo $dato_carrito['precio_venta']; ?></center></td>
+                                          <td>
+                                            <center>
+                                              <?php 
+                                                $cantidad = floatval($dato_carrito['cantidad']);
+                                                $precio_venta = floatval($dato_carrito['precio_venta']);
+                                               echo $subtotal = $cantidad * $precio_venta;
+                                               
+                                              ?>
+                                            </center>
+                                          </td>
+                                          <td>
+                                            <form action="../app/controllers/ventas/borrar_carrito.php" method="post">
+                                              <center>
+                                                <input type="text" name="id_carrito" value="<?php echo $id_carrito; ?>" hidden>
+                                                <button type="submit" class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i> Eliminar</button>
+                                              </center>
+                                            </form>
+                                          </td>
+                                        </tr>
+                                          
+                                    <?php  
+                                      }
+                                      
+                                    ?>
 
                                     <tr>
-                                        <td colspan="5" style="text-align: right; font-weight: bold;">Total:</td>
-                                        <td style="text-align: center; font-weight: bold;">35.00</td>
-                                        <td></td>
+                                        <td colspan="3" style="text-align: right; font-weight: bold;">Total:</td>
+                                        <th>
+                                          <center>
+                                            <?php echo $cantidad_total; ?>
+                                          </center>
+                                        </th>
+                                        <th>
+                                          <center>
+                                            <?php echo $precio_unitario_total; ?>
+                                          </center>
+                                        </th>
+                                        <th>
+                                          <center>
+                                            <?php echo $precio_subtotal; ?>
+                                          </center>
+                                        </th>
                                     </tr>
 
                                 </tbody>
