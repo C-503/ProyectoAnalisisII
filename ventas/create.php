@@ -60,7 +60,7 @@ if(isset($_SESSION['mensaje1'])) {
         Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Venta registrada correctamente",
+        title: "Gracias por su compra",
         showConfirmButton: false,
         timer: 2000
    });
@@ -588,15 +588,16 @@ if(isset($_SESSION['mensaje1'])) {
 
                                 alert("Debe seleccionar un cliente");
                               }else{
-                                guardar_venta();
+                               
                                 actualizar_stock();
+                                guardar_venta();
                               }
                              
                               function actualizar_stock(){
                                  var i = 1;
                                 var n = '<?php echo $contador_de_carrito;?>';
                                
-                                for (i = 1; i < n; i++){
+                                for (i = 1; i <= n; i++){
                                   var a = '#stock_inventario'+i;
                                   var stock_inventario = $(a).val();
                                   var b = '#cantidad_carrito'+i;
@@ -604,16 +605,16 @@ if(isset($_SESSION['mensaje1'])) {
                                   var c = '#id_producto'+i;
                                   var id_producto = $(c).val();
 
-                                  var stock_calculado = parseInt(stock_inventario) - parseInt(cantidad_carrito);
+                                  var stock_calculado = parseFloat(stock_inventario - cantidad_carrito);
 
                                   var url2 = "../app/controllers/ventas/actualizar_inventario.php";
                                         $.get(url2, {id_producto:id_producto, stock_calculado:stock_calculado}, function(datos){
                                            
                                         });
-
-                                  
+  
                                 }
                               }
+
                               function guardar_venta(){
                                 var url = "../app/controllers/ventas/registro_de_ventas.php";
                                         $.get(url, {nro_venta:nro_venta,id_cliente:id_cliente,total_cancelar:total_cancelar}, function(datos){
@@ -776,7 +777,7 @@ if(isset($_SESSION['mensaje1'])) {
                                         
                                     </div>
                                     <!-- /.modal-content -->
-                                     
+
                                     </div>
                                     <!-- /.modal-dialog -->
                                      
