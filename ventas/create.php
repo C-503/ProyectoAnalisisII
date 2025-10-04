@@ -776,6 +776,7 @@ if(isset($_SESSION['mensaje1'])) {
                                         
                                     </div>
                                     <!-- /.modal-content -->
+                                     
                                     </div>
                                     <!-- /.modal-dialog -->
                                      
