@@ -290,6 +290,7 @@ if(isset($_SESSION['mensaje6'])) {
                                 <center>
                                     <a href="show.php?id_venta=<?php echo $dato_ventas['id_venta']; ?>" class="btn btn-primary">Mostrar</a>
                                     <a href="delete.php?id_venta=<?php echo $dato_ventas['id_venta']; ?>&nro_venta=<?php echo $nro_venta;?>" class="btn btn-danger">Eliminar</a>
+                                    <a href="factura.php?id_venta=<?php echo $dato_ventas['id_venta']; ?>" class="btn btn-success">Factura</a>
                                 </center>
                             </td>
 

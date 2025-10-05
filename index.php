@@ -9,6 +9,8 @@ include ('app/controllers/categorias/listado_de_categorias.php');
 include ('app/controllers/almacen/listado_de_productos.php');
 include ('app/controllers/proveedores/listado_de_proveedores.php');
 include ('app/controllers/compras/listado_de_compras.php');
+include ('app/controllers/ventas/listado_de_ventas.php');
+include ('app/controllers/clientes/listado_de_clientes.php');
 
 ?>
 
@@ -182,6 +184,54 @@ include ('app/controllers/compras/listado_de_compras.php');
               </div>
               </a>
               <a href="<?php echo $URL;?>/Proveedores" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+            <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+
+                <?php 
+                  $contador_ventas = 0;
+                  foreach($datos_ventas as $dato_ventas){
+                    $contador_ventas = $contador_ventas + 1;
+                  }
+                ?>
+                <h3><?php echo $contador_ventas?></h3>
+
+                <p>Ventas Registradas</p>
+              </div>
+              <a href="<?php echo $URL;?>/ventas/create.php">
+                <div class="icon">
+                <i class="fas fa-shopping-basket"></i>
+              </div>
+              </a>
+              <a href="<?php echo $URL;?>/ventas" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+
+                <?php 
+                  $contador_clientes = 0;
+                  foreach($datos_clientes as $dato_clientes){
+                    $contador_clientes = $contador_clientes + 1;
+                  }
+                ?>
+                <h3><?php echo $contador_clientes?></h3>
+
+                <p>Clientes Registrados</p>
+              </div>
+              <a href="<?php echo $URL;?>/clientes/create.php">
+                <div class="icon">
+                <i class="fas fa-user"></i>
+              </div>
+              </a>
+              <a href="<?php echo $URL;?>/clientes" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
