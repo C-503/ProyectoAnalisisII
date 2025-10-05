@@ -58,7 +58,7 @@ $stock_total = $_GET['stock_total'];
 
     session_start();
     $_SESSION['mensaje6'] = "compra no registrada";
-    header('Location: '.$URL.'/compras/create.php');
+    //header('Location: '.$URL.'/compras/create.php');
      ?>
     <script>
         location.href = '<?php echo $URL ?>/compras/create.php';

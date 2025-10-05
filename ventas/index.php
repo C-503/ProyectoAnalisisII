@@ -11,7 +11,7 @@ if(isset($_SESSION['mensaje1'])) {
         Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Compra registrada correctamente",
+        title: "Venta eliminada correctamente",
         showConfirmButton: false,
         timer: 2000
    });
@@ -27,8 +27,8 @@ if(isset($_SESSION['mensaje6'])) {
     <script>
         Swal.fire({
         position: "top-center",
-        icon: "success",
-        title: "Se actualizo la compra de la manera correcta",
+        icon: "error",
+        title: "No se elimino la venta",
         showConfirmButton: false,
         timer: 2000
    });
@@ -36,23 +36,6 @@ if(isset($_SESSION['mensaje6'])) {
 
 <?php
   unset($_SESSION['mensaje6']);
-
-}
-
-if(isset($_SESSION['mensaje5'])) {
-    $respuesta = $_SESSION['mensaje5']; ?>
-    <script>
-        Swal.fire({
-        position: "top-center",
-        icon: "success",
-        title: "Se borro la compra de la manera correcta",
-        showConfirmButton: false,
-        timer: 2000
-   });
-</script>
-
-<?php
-  unset($_SESSION['mensaje5']);
 
 }
 
@@ -305,8 +288,8 @@ if(isset($_SESSION['mensaje5'])) {
 
                             <td>
                                 <center>
-                                    <a href="" class="btn btn-primary">Mostrar</a>
-                                    <a href="" class="btn btn-danger">Eliminar</a>
+                                    <a href="show.php?id_venta=<?php echo $dato_ventas['id_venta']; ?>" class="btn btn-primary">Mostrar</a>
+                                    <a href="delete.php?id_venta=<?php echo $dato_ventas['id_venta']; ?>&nro_venta=<?php echo $nro_venta;?>" class="btn btn-danger">Eliminar</a>
                                 </center>
                             </td>
 
