@@ -226,12 +226,12 @@ include ('app/controllers/clientes/listado_de_clientes.php');
 
                 <p>Clientes Registrados</p>
               </div>
-              <a href="<?php echo $URL;?>/clientes/create.php">
+              <a href="<?php echo $URL;?>/ventas/create.php">
                 <div class="icon">
                 <i class="fas fa-user"></i>
               </div>
               </a>
-              <a href="<?php echo $URL;?>/clientes" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo $URL;?>/ventas/create.php" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
